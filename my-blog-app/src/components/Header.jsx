@@ -1,9 +1,11 @@
-function Header(){
+function Header() {
     return (
-        <header>
-            <h1>Fiap Blog</h1>
-        </header>
+      <nav className="navbar bg-body-tertiary">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">My Blog</a>
+        </div>
+      </nav>
     );
-}
-
-export default Header;
+  }
+  
+  export default Header;
