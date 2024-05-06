@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import LayoutDefault from "../Layout/LayoutDefault";
+import { Link, useParams } from "react-router-dom";
+import LayoutDefault from "../layout/LayoutDefault";
 import { client } from "../util/createClient";
-
-const SLUG_TMP = 'meu-primeiro-post';
 
 function PagePost() {
     const [post, setPost] = useState(null);
+
+    const { slug } = useParams();
     
     // Criar um método getPost do tipo async
     // chamar ele dentro do useEffect
@@ -15,10 +16,8 @@ function PagePost() {
         try {
             const response = await client.getEntries({
                 content_type: 'fiapBlogPost',
-                'fields.postSlug': SLUG_TMP
+                'fields.postSlug': slug
             });
-
-            console.log(response.items[0]);
 
             setPost(response.items[0] || null);
         } catch (error) {
@@ -43,6 +42,10 @@ function PagePost() {
                                     <div dangerouslySetInnerHTML={{__html: documentToHtmlString(post.fields.postContent)}}></div>
                                 </>
                             )}
+                            
+                            <Link to="/" className="btn btn-primary">
+                                Voltar
+                            </Link>
                         </div>
                     </div>
                 </div>

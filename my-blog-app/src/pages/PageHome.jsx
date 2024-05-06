@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Post from "../components/Post";
-import LayoutDefault from "../Layout/LayoutDefault";
+import LayoutDefault from "../layout/LayoutDefault";
 import { client } from "../util/createClient";
 
 function PageHome() {
@@ -11,7 +12,7 @@ function PageHome() {
     const getPosts = async () => {
         try {
             const response = await client.getEntries({
-                content_type: 'FiapBlogPost',
+                content_type: 'fiapBlogPost',
                 limit: 5,
                 order: "-sys.createdAt"
             });
@@ -25,7 +26,7 @@ function PageHome() {
     const getCategories = async () => {
         try {
             const response = await client.getEntries({
-                content_type: 'FiapBlogCategory'
+                content_type: 'fiapBlogCategory'
             });
     
             setCategories(response.items);
@@ -64,9 +65,9 @@ function PageHome() {
                             />
                         ))}
 
-                        <a href="#" className="btn btn-primary">
+                        <Link to="/" className="btn btn-primary">
                             Ver todos os posts
-                        </a>
+                        </Link>
                     </main>
                     <aside className="col-md-4">
                         <h2 className="my-3">Categorias</h2>
