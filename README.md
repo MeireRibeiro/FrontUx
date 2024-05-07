@@ -1,6 +1,12 @@
 Bem-vindo ao meu projeto de blog desenvolvido em React! 
 Este projeto é uma aplicação web simples que permite aos usuários visualizarem artigos sobre jornada que inspira.
 
+Tecnologias Utilizadas
+Este projeto foi desenvolvido com:
+React.js
+Contentful SDK
+CSS 
+
 Pré-requisitos:
 Antes de começar, você precisa ter instalado em sua máquina:
 
