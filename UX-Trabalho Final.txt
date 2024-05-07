@@ -1,0 +1,3 @@
+Link do video - https://www.loom.com/share/235bf7a48d5141b6ad7339d2a9a9679d?sid=399d054d-0a5c-482d-97f2-d6c20d2abecc
+Link do Netlify - https://mefrontendux.netlify.app
+Link do GitHub - https://github.com/MeireRibeiro/FrontUx.git
