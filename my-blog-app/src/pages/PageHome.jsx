@@ -9,15 +9,16 @@ function PageHome() {
     const [categories, setCategories] = useState([]);
     const [page, setPage] = useState(1);
     const [feedbackPosts, setFeedbackPosts] = useState('Carregando posts...');
+    const [finalPage, setHasMore] = useState(true);
+    const [postsPage] = useState(3);
 
     const getPosts = async () => {
         try {
             const response = await client.getEntries({
                 content_type: 'fiapBlogPost',
-                limit: 3,
+                limit: postsPage,
                 order: "-sys.createdAt"
             });
-    
             setPosts(response.items);
         } catch (error) {
             setFeedbackPosts('Erro ao carregar os posts, run to the hills!');
@@ -28,10 +29,17 @@ function PageHome() {
         try {
             const response = await client.getEntries({
                 content_type: 'fiapBlogPost',
-                limit: 3,
-                skip: (page - 1) * 3 
+                limit: postsPage,
+                skip: (page - 1) * postsPage 
               }); 
-            setPosts(response.items);
+
+            if (response.items.length > 0 && response.items.length <= postsPage) {
+                setPosts(response.items); 
+                setHasMore(response.items.length === postsPage);
+            } else {
+                setHasMore(false);
+            }
+
         } catch (error) {
             setFeedbackPosts('Erro ao carregar os posts, run to the hills!');
         }
@@ -70,7 +78,7 @@ function PageHome() {
                         {posts.length === 0 && (
                             <p>{feedbackPosts}</p>
                         )}
-
+   
                         {posts.map((post) => (
                             <Post
                                 key={post.sys.id}
@@ -98,7 +106,7 @@ function PageHome() {
                 </div>
                 <br />
                 <button onClick={() => setPage(page - 1)} disabled={page === 1}>Anterior</button>
-                <button onClick={() => setPage(page + 1)} disabled={page === 3}>Próxima</button>
+                <button onClick={() => setPage(page + 1)} disabled={!finalPage}>Próxima</button>
             </div>
         </LayoutDefault>
     )
