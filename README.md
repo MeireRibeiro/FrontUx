@@ -9,7 +9,7 @@ npm
 
 Clone o repositório:
 Copy code
-git clone https://github.com/MeireRibeiro/FrontUx/.git
+git clone https://github.com/MeireRibeiro/FrontUx.git
 
 
 Acesse o diretório do projeto:
