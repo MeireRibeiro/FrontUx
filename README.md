@@ -1,7 +1,7 @@
 Bem-vindo ao meu projeto de blog desenvolvido em React! 
 Este projeto é uma aplicação web simples que permite aos usuários visualizarem artigos sobre jornada que inspira.
 
-Pré-requisitos
+Pré-requisitos:
 Antes de começar, você precisa ter instalado em sua máquina:
 
 node.js
