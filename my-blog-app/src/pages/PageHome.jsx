@@ -7,16 +7,30 @@ import { client } from "../util/createClient";
 function PageHome() {
     const [posts, setPosts] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [page, setPage] = useState(1);
     const [feedbackPosts, setFeedbackPosts] = useState('Carregando posts...');
 
     const getPosts = async () => {
         try {
             const response = await client.getEntries({
                 content_type: 'fiapBlogPost',
-                limit: 5,
+                limit: 3,
                 order: "-sys.createdAt"
             });
     
+            setPosts(response.items);
+        } catch (error) {
+            setFeedbackPosts('Erro ao carregar os posts, run to the hills!');
+        }
+    };
+
+    const getPagePosts = async () => {
+        try {
+            const response = await client.getEntries({
+                content_type: 'fiapBlogPost',
+                limit: 3,
+                skip: (page - 1) * 3 
+              }); 
             setPosts(response.items);
         } catch (error) {
             setFeedbackPosts('Erro ao carregar os posts, run to the hills!');
@@ -42,8 +56,9 @@ function PageHome() {
 
     useEffect(() => {
         getPosts();
+        getPagePosts();
         getCategories();
-    }, []); // ciclo de vida - no onLoad do componente
+    }, [page]); 
     
     return (
         <LayoutDefault>
@@ -65,7 +80,7 @@ function PageHome() {
                             />
                         ))}
 
-                        <Link to="/" className="btn btn-primary">
+                        <Link to={"/page/todos-os-posts"} className="btn btn-primary">
                             Ver todos os posts
                         </Link>
                     </main>
@@ -81,6 +96,9 @@ function PageHome() {
                         </ul>
                     </aside>
                 </div>
+                <br />
+                <button onClick={() => setPage(page - 1)} disabled={page === 1}>Anterior</button>
+                <button onClick={() => setPage(page + 1)} disabled={page === 3}>Próxima</button>
             </div>
         </LayoutDefault>
     )

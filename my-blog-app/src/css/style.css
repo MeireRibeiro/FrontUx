@@ -1,0 +1,23 @@
+.navbar {
+    background-color: #10222e;
+    padding: 10px;
+  }
+  
+  .navbar-items {
+    display: inline-flex;
+    align-items: center; /* Alinha verticalmente os itens */
+  }
+  
+  .logo {
+    width: 180px; /* Defina o tamanho da logo conforme necessário */
+    height: auto;
+    margin-right: 50px; /* Adiciona um espaço entre a logo e o texto */
+  }
+  
+  .navbar-brand {
+    color: #333;
+    font-size: 380px;
+    text-decoration: none;
+    font-family:Georgia, 'Times New Roman', Times, serif
+  }
+  

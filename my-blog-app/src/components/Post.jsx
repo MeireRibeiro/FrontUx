@@ -6,7 +6,7 @@ function Post({ title, description, slug }) {
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text">{description}</p>
-                <Link to={`/post/${slug}`} className="card-link">
+                <Link href={'/post/${slug}'} className="card-link">
                     Ver post
                 </Link>
             </div>

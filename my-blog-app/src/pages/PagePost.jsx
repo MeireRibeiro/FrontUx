@@ -46,6 +46,7 @@ function PagePost() {
                             <Link to="/" className="btn btn-primary">
                                 Voltar
                             </Link>
+                            
                         </div>
                     </div>
                 </div>
