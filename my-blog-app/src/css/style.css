@@ -5,13 +5,13 @@
   
   .navbar-items {
     display: inline-flex;
-    align-items: center; /* Alinha verticalmente os itens */
+    align-items: center; 
   }
   
   .logo {
-    width: 180px; /* Defina o tamanho da logo conforme necessário */
+    width: 180px; 
     height: auto;
-    margin-right: 50px; /* Adiciona um espaço entre a logo e o texto */
+    margin-right: 50px; 
   }
   
   .navbar-brand {
